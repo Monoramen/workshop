@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="~{fragments/head :: head}">
+    <title>Моя страница</title>
+</head>
+
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<br /><br />
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">УСЛУГИ</h1>
+    </div>
+    <div class="row">
+        <h2>Services</h2>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th><a th:href="@{/services(sort='category')}">Категория</a></th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.id}"></td>
+                <td th:text="${service.name}"></td>
+                <td th:text="${{service.category.name}}"></td>
+                <td th:text="${service.price}"></td>
+                <td><a th:href="@{/services/{id}/edit(id=${service.id})}">Изменить</a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

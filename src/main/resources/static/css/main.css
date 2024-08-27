@@ -1,0 +1,13 @@
+body {
+    background-size: 100%;
+    background-image: url("bg.jpg");
+    background-repeat: repeat ;
+    background-attachment: fixed;
+}
+.container  {
+    background-color: #f3e4e4;
+    border-radius: 6px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+    padding: 4px;
+}

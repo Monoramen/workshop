@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+  db:
+    image: 'postgres:16-alpine'
+    container_name: db
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=compose
+    networks:
+      postgresql:
+        ipv4_address: 10.103.0.2
+
+networks:
+  postgresql:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.103.0.0/24
+          gateway: 10.103.0.1

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+    <title>Моя страница</title>
+</head>
+
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="container">
+    <h1 class="mt-4">Изменить заказ</h1>
+    <form th:action="@{/orders/{id}(id=${order.id})}" th:object="${order}" method="post">
+        <div class="mb-3">
+            <label for="client" class="form-label">Клиент:</label>
+            <select id="client" name="clientId" class="form-select" required>
+                <option th:each="client : ${clients}"
+                        th:value="${client.id}"
+                        th:text="${client.name + ' ' + client.surname}"
+                        th:selected="${client.id == order.client.id}">
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="service" class="form-label">Услуга:</label>
+            <select id="service" name="serviceId" class="form-select" required>
+                <option th:each="service : ${services}"
+                        th:value="${service.id}"
+                        th:text="${service.name}"
+                        th:selected="${service.id == order.service.id}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="date" class="form-label">Дата:</label>
+            <input type="date" id="date" name="date" class="form-control" th:value="${order.date}" required>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Сохранить">
+        </div>
+    </form>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

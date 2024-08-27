@@ -1,0 +1,18 @@
+
+    <div th:fragment="modal(id)" class="modal fade" th:id="${id}" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteOrderModalLabel">Подтвердите удаление</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Уверены, что хотите удалить заказ</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Нет</button>
+                    <button class="btn btn-sm btn-danger" id="delRef">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+    <title>Моя страница</title>
+</head>
+
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="container">
+    <h1 class="mt-4">Изменить услугу</h1>
+    <form th:action="@{/services/{id}(id=${service.id})}" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Название:</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${service.name}" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Цена:</label>
+            <input type="number" class="form-control" id="price" name="price" th:value="${service.price}" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Категория:</label>
+            <select class="form-select" id="category" name="categoryId" required>
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}"
+                        th:selected="${category.id == service.category.id}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="duration" class="form-label">Сроки:</label>
+            <input type="text" class="form-control" id="duration" name="duration" th:value="${service.duration}" required>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Сохранить">
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+            <form th:action="@{/orders}" th:object="${order}" method="post" id="orderForm">
+                <div class="input-group">
+                    <span class="input-group-text">Имя и Фамилия</span>
+                    <input type="text" aria-label="First name" class="form-control">
+                    <input type="text" aria-label="Last name" class="form-control">
+                </div>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">email</span>
+                    <input type="text" class="form-control" placeholder="email" aria-label="email" aria-describedby="addon-wrapping">
+                </div>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">Тел.</span>
+                    <input type="text" class="form-control" placeholder="Телефон" aria-label="phone" aria-describedby="addon-wrapping">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" class="btn btn-primary">Создать заказ</button>
+                </div>
+            </form>
